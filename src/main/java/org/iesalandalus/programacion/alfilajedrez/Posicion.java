@@ -13,6 +13,9 @@ public class Posicion {
 		}
 		
 		public Posicion(Posicion posicion) {
+			if (posicion == null) {
+				throw new NullPointerException("ERROR: No es posible copiar una posición nula.");
+			}
 			this.fila = posicion.fila;
 			this.columna = posicion.columna;
 		}
