@@ -116,6 +116,11 @@ public class Alfil {
 		this.posicion = posicion;
 	
 	}
+
+	@Override
+	public String toString() {
+		return String.format("color=%s, posicion=%s", color, posicion);
+	}
 	
 	
 }
