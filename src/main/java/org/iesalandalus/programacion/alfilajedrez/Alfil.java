@@ -1,4 +1,6 @@
 package org.iesalandalus.programacion.alfilajedrez;
+import java.util.Objects;
+
 import javax.naming.OperationNotSupportedException;
 
 public class Alfil {
@@ -77,6 +79,23 @@ public class Alfil {
 
 	}
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(color, posicion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Alfil)) {
+			return false;
+		}
+		Alfil other = (Alfil) obj;
+		return color == other.color && Objects.equals(posicion, other.posicion);
+	}
+
 	public Color getColor() {
 		return color;
 	}
