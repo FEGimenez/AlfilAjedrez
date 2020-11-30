@@ -1,10 +1,11 @@
 package org.iesalandalus.programacion.alfilajedrez;
+import javax.naming.OperationNotSupportedException;
 
 public class Alfil {
 	
 	private Color color;
 	private Posicion posicion;
-
+	private static final String ERROR_MOVIMIENTO = "Movimiento no permitido: ";
 	
 	public Alfil() {
 		setColor(Color.NEGRO);
@@ -54,4 +55,44 @@ public class Alfil {
 		this.posicion = posicion;
 	
 	}
+	
+	public void mover(Direccion direccion, int pasos) throws OperationNotSupportedException {
+		if (direccion == null) {
+			throw new IllegalArgumentException("La dirección no puede ser nula.");
+		}
+		if (pasos < 0) {
+			throw new IllegalArgumentException("El número de pasos debe ser positivo.");
+		}
+		switch (direccion) {
+			case ARRIBA:
+				try {
+					posicion.setFila(posicion.getColumna() + pasos);
+				} catch (IllegalArgumentException e) {
+					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
+				}
+				break;
+			case ABAJO:
+				try {
+					posicion.setFila(posicion.getColumna() + pasos);
+				} catch (IllegalArgumentException e) {
+					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
+				}
+				break;	
+			case DERECHA:
+				try {
+					posicion.setFila(posicion.getColumna() + pasos);
+				} catch (IllegalArgumentException e) {
+					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
+				}
+				break;
+			case IZQUIERDA:
+				try {
+					posicion.setFila(posicion.getColumna() - pasos);
+				} catch (IllegalArgumentException e) {
+					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
+				}
+				break;
+			default:
+				break;
+		}	
 }
