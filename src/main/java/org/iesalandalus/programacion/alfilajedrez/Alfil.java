@@ -6,9 +6,9 @@ public class Alfil {
 	private Posicion posicion;
 
 	
-	public Alfil(Color color, Posicion posicion) {
-		this.color = color;
-		this.posicion = posicion;
+	public Alfil() {
+		setColor(Color.NEGRO);
+		setPosicion(new Posicion(8, 'f'));
 	}
 	
 	public Color getColor() {
