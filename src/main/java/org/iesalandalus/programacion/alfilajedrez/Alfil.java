@@ -14,12 +14,24 @@ public class Alfil {
 	public Alfil(Color color) {
 		setColor(color);
 		
-		if (color.equals(Color.BLANCO)) {
-			setPosicion(new Posicion(1, 'f'));
-		} else {
-			setPosicion(new Posicion(8, 'f'));
-		}
-		
+			if (color.equals(Color.BLANCO)) {
+				setPosicion(new Posicion(1, 'f'));
+			} else {
+				setPosicion(new Posicion(8, 'f'));
+			}
+	}
+	
+	public Alfil(Color color, char columna) {
+		setColor(color);
+			if (columna != 'c' || columna !='f') {
+				throw new IllegalArgumentException("ERROR: Columna no válida.");
+			} else {
+				if (color == Color.BLANCO) {
+					setPosicion(new Posicion(1, columna));
+				} else {
+					setPosicion(new Posicion(8, columna));
+				}	
+			}
 	}
 	
 	public Color getColor() {
@@ -27,12 +39,13 @@ public class Alfil {
 	}
 	
 	private void setColor(Color color) {
-		if (color == null) {
-			throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
-		} else {
-			this.color = color;
-		}
+			if (color == null) {
+				throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
+			} else {
+				this.color = color;
+			}
 	}
+	
 	public Posicion getPosicion() {
 		return posicion;
 	}
