@@ -35,6 +35,48 @@ public class Alfil {
 			}
 	}
 	
+	public void mover(Direccion direccion, int pasos) throws OperationNotSupportedException {
+		if (direccion == null) {
+			throw new IllegalArgumentException("La dirección no puede ser nula.");
+		}
+		if (pasos < 0) {
+			throw new IllegalArgumentException("El número de pasos debe ser positivo.");
+		}
+		switch (direccion) {
+			case ARRIBA_DERECHA:
+				try {
+					posicion.setFila(posicion.getColumna() + pasos);
+				} catch (IllegalArgumentException e) {
+					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
+				}
+				break;
+			case ABAJO_DERECHA:
+				try {
+					posicion.setFila(posicion.getColumna() + pasos);
+				} catch (IllegalArgumentException e) {
+					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
+				}
+				break;	
+			case ABAJO_IZQUIERDA:
+				try {
+					posicion.setFila(posicion.getColumna() + pasos);
+				} catch (IllegalArgumentException e) {
+					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
+				}
+				break;
+			case ARRIBA_IZQUIERDA:
+				try {
+					posicion.setFila(posicion.getColumna() - pasos);
+				} catch (IllegalArgumentException e) {
+					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
+				}
+				break;
+			default:
+				break;
+		}	
+
+	}
+	
 	public Color getColor() {
 		return color;
 	}
@@ -56,43 +98,5 @@ public class Alfil {
 	
 	}
 	
-	public void mover(Direccion direccion, int pasos) throws OperationNotSupportedException {
-		if (direccion == null) {
-			throw new IllegalArgumentException("La dirección no puede ser nula.");
-		}
-		if (pasos < 0) {
-			throw new IllegalArgumentException("El número de pasos debe ser positivo.");
-		}
-		switch (direccion) {
-			case ARRIBA:
-				try {
-					posicion.setFila(posicion.getColumna() + pasos);
-				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
-				}
-				break;
-			case ABAJO:
-				try {
-					posicion.setFila(posicion.getColumna() + pasos);
-				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
-				}
-				break;	
-			case DERECHA:
-				try {
-					posicion.setFila(posicion.getColumna() + pasos);
-				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
-				}
-				break;
-			case IZQUIERDA:
-				try {
-					posicion.setFila(posicion.getColumna() - pasos);
-				} catch (IllegalArgumentException e) {
-					throw new OperationNotSupportedException(ERROR_MOVIMIENTO + e.getMessage());
-				}
-				break;
-			default:
-				break;
-		}	
+	
 }
