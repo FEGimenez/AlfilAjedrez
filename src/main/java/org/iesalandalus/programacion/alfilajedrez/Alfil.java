@@ -11,6 +11,17 @@ public class Alfil {
 		setPosicion(new Posicion(8, 'f'));
 	}
 	
+	public Alfil(Color color) {
+		setColor(color);
+		
+		if (color.equals(Color.BLANCO)) {
+			setPosicion(new Posicion(1, 'f'));
+		} else {
+			setPosicion(new Posicion(8, 'f'));
+		}
+		
+	}
+	
 	public Color getColor() {
 		return color;
 	}
